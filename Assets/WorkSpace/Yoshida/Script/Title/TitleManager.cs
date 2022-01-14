@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
@@ -20,5 +21,10 @@ public class TitleManager : MonoBehaviour
         Elapsed += Time.deltaTime;
         Elapsed %= 1.0f;
         txtNav.text = (Elapsed < 0.8f) ? "Push Any Button" : "";
+
+        if(Input.anyKey)
+        {
+            SceneManager.LoadScene("RULE");
+        }
     }
 }

@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/WorkSpace/Yoshida/Scenes/TITLE.unity
+    guid: d7133b8aff62a064eaa374584de96b9d
+  - enabled: 1
+    path: Assets/WorkSpace/Yoshida/Scenes/RULE.unity
+    guid: 0134b2c83f69c284fb1585dae4b38776
+  - enabled: 1
+    path: Assets/WorkSpace/Yoshida/Scenes/MAIN.unity
+    guid: d7801548f2f48c745aa17a8711b9ed05
+  - enabled: 1
+    path: Assets/WorkSpace/Yoshida/Scenes/RESULT.unity
+    guid: e6d1622baeabe3045b78e5faa343f457
+  - enabled: 1
+    path: Assets/WorkSpace/Yoshida/Scenes/GAMEOVER.unity
+    guid: fca92d86c13963e47872d67e568d922b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
