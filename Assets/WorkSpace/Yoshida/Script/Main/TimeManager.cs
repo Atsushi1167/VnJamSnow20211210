@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
+    GameObject Player;
+    GameObject PlayerAnim;
     float ThreeCount = 3.0f;
     public float Limit = 60.0f;
     float Count;
@@ -22,10 +24,13 @@ public class TimeManager : MonoBehaviour
 
     public Text txtThreeCount;
     public Text txtLimit;
+    public GameObject imgCrosshair;
 
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.FindWithTag("Player");
+        PlayerAnim = GameObject.FindWithTag("Animator");
         SetStart();
     }
 
@@ -36,6 +41,7 @@ public class TimeManager : MonoBehaviour
         Count = Limit;
         txtThreeCount.text = Count.ToString("N2");
         txtLimit.text = "";
+        imgCrosshair.SetActive(false);
     }
 
     void GameOver()
@@ -57,6 +63,10 @@ public class TimeManager : MonoBehaviour
                 }
                 if(ThreeCount < -1.5f)
                 {
+                    //プレイヤーを操作可能に
+                    Player.GetComponent<PlayerScript>().Play();
+                    PlayerAnim.GetComponent<Animation>().PlayAnim();
+
                     GameMode = MODE.Main;
                 }
 
@@ -66,11 +76,17 @@ public class TimeManager : MonoBehaviour
                 txtThreeCount.text = "";
                 Count -= Time.deltaTime;
                 txtLimit.text = Count.ToString("N0") + "s";
+                imgCrosshair.SetActive(true);
 
                 if(Count <= 0.0f)
                 {
+                    imgCrosshair.SetActive(false);
                     txtLimit.text = "";
                     txtThreeCount.text = "GameSet!";
+
+                    //プレイヤーを操作不可に
+                    Player.GetComponent<PlayerScript>().Ready();
+                    PlayerAnim.GetComponent<Animation>().ReadyAnim();
                 }
                 if (Count < -1.5f)
                 {
