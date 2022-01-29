@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public GameObject Camera;               //カメラ
+    public GameObject CameraManager;
+    public GameObject SnowBall;
+    public GameObject ShootPos;
+    GameObject TargetPos;
     public float movespeed = 3.0f;          //プレイヤーの歩行速度
     public float dashspeed = 7.0f;          //プレイヤーのダッシュ速度
     public float ThrowcoolTime = 1.0f;      //雪玉の連射クールタイム
@@ -28,6 +32,7 @@ public class PlayerScript : MonoBehaviour
     {
         this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);   //照準角度を初期化
         this.rigid = GetComponent<Rigidbody>();                         //自身のRigidbodyを取得
+        TargetPos = GameObject.FindGameObjectWithTag("Target");
         CanMove = false;
         CanJump = false;
         CanThrow = false;
@@ -93,6 +98,9 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetButton("Fire1") && CanThrow)
         {
             LookFront();
+            TargetPos.transform.position = CameraManager.GetComponent<CameraRay>().RayOn();
+            Instantiate(SnowBall, ShootPos.transform.position, Quaternion.identity);
+
             CanThrow = false;
         }
         if (!CanThrow)
@@ -104,6 +112,7 @@ public class PlayerScript : MonoBehaviour
                 Elapsed2 = 0.0f;
             }
         }
+        
     }
 
     private void Update()

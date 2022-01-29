@@ -24,7 +24,7 @@ public class ResultManager : MonoBehaviour
         //メッセージの点滅
         Elapsed += Time.deltaTime;
         Elapsed %= 1.0f;
-        txtNav.text = (Elapsed < 0.8f) ? "Push A Button" : "";
+        txtNav.text = (Elapsed < 0.8f) ? "Push Left Mouse Button" : "";
 
         //長押し検出
         if (Input.GetButton("Fire1"))

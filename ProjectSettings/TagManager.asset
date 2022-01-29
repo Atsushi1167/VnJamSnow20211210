@@ -8,6 +8,9 @@ TagManager:
   - Enemey
   - Ground
   - Animator
+  - SnowBall
+  - Target
+  - SnowBallEnemy
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - SnowBall
+  - SnowBallEnemy
+  - Enemy
   - 
   - 
   - 
