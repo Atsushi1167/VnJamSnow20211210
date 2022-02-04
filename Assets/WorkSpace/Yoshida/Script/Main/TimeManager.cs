@@ -14,6 +14,14 @@ public class TimeManager : MonoBehaviour
     float Count;
     float Elapsed;
     public int PlayerHP;
+    bool start;
+    bool timeup;
+
+    AudioSource MyAudio;
+
+    public AudioClip SE_START;
+    public AudioClip SE_TIMEUP;
+    public AudioClip SE_COUNTDOWN;
 
     enum MODE
     {
@@ -41,6 +49,9 @@ public class TimeManager : MonoBehaviour
             Enemy.GetComponent<EnemyAction>().AIOnOff(false);
         }
         SetStart();
+        MyAudio = GetComponent<AudioSource>();
+        start = false;
+        timeup = false;
     }
 
     void SetStart()
@@ -73,6 +84,11 @@ public class TimeManager : MonoBehaviour
                 if (ThreeCount <= 0.0f)
                 {
                     txtThreeCount.text = "START!";
+                    if (!start)
+                    {
+                        MyAudio.PlayOneShot(SE_START);
+                        start = true;
+                    }
                 }
                 if(ThreeCount < -1.5f)
                 {
@@ -120,6 +136,11 @@ public class TimeManager : MonoBehaviour
                     txtLimit.text = "";
                     txtHP.text = "";
                     txtThreeCount.text = "GameSet!";
+                    if (!timeup)
+                    {
+                        MyAudio.PlayOneShot(SE_TIMEUP);
+                        timeup = true;
+                    }
                     foreach (GameObject Enemy in Enemies)
                     {
                         Enemy.GetComponent<EnemyAction>().AIOnOff(false);
