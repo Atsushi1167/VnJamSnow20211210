@@ -125,8 +125,11 @@ public class TimeManager : MonoBehaviour
                         Enemy.GetComponent<EnemyAction>().AIOnOff(false);
                     }
                     //プレイヤーを操作不可に
-                    Player.GetComponent<PlayerScript>().Ready();
-                    PlayerAnim.GetComponent<Animation>().ReadyAnim();
+                    if (Player != null)
+                    {
+                        Player.GetComponent<PlayerScript>().Ready();
+                        PlayerAnim.GetComponent<Animation>().ReadyAnim();
+                    }
                 }
                 if (Count < -1.5f)
                 {

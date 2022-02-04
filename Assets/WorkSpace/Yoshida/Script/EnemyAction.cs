@@ -23,9 +23,12 @@ public class EnemyAction : MonoBehaviour
     bool walk;
     bool CanMove;
 
+    AudioSource MyAudio;
+
     // Start is called before the first frame update
     void Start()
     {
+        MyAudio = GetComponent<AudioSource>(); //自身の音源を取得
         Player = GameObject.FindWithTag("Player");
         ShootPos = this.transform.Find("ShootPos").gameObject;
         Elapsed = 0.0f; //経過時間リセット
@@ -132,22 +135,30 @@ public class EnemyAction : MonoBehaviour
     {
         if (CanMove)
         {
-                if (!InPlayer)
+            if (!InPlayer)
+            {
+                WalkSystem();
+                if (walk)
                 {
-                    WalkSystem();
-                    if (walk)
-                    {
-                        Vector3 Dir = MustBePos - transform.position;
-                        transform.position += Dir.normalized * walkSpeed * Time.deltaTime;
-                    }
+                    Vector3 Dir = MustBePos - transform.position;
+                    transform.position += Dir.normalized * walkSpeed * Time.deltaTime;
                 }
-                else
-                {
+            }
+            else
+            {
                 if (Player != null)
                 {
                     Throw();
                 }
-                }
+            }
+        }
+        if(walk)
+        {
+            MyAudio.Play();
+        }
+        else
+        {
+            MyAudio.Stop();
         }
     }
 }
