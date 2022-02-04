@@ -1066,6 +1066,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Limit: 10
   PlayerHP: 0
+  SE_START: {fileID: 8300000, guid: 9efc55947c80c4b4ab10b006eb32e8d4, type: 3}
+  SE_TIMEUP: {fileID: 8300000, guid: 06a64be29fbd6724abddf1212d23eb92, type: 3}
+  SE_COUNTDOWN: {fileID: 0}
   txtThreeCount: {fileID: 550708624}
   txtLimit: {fileID: 1752029477}
   imgCrosshair: {fileID: 2076335947}
