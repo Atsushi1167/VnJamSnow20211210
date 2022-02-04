@@ -27,6 +27,13 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody rigid;
 
+    AudioSource MyAudio;
+
+    public AudioClip SE_DAMAGE;
+    public AudioClip SE_JUMP;
+    public AudioClip SE_WALK;
+    public AudioClip SE_DASH;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +46,7 @@ public class PlayerScript : MonoBehaviour
         Elapsed = 0.0f;
         Elapsed2 = 0.0f;
         DefaultPos = transform.position;                                //初期位置を保存
+        MyAudio = GetComponent<AudioSource>();
     }
 
     private void OnCollisionStay(Collision other)
@@ -53,6 +61,15 @@ public class PlayerScript : MonoBehaviour
         {
             CanJump = true;
             //gameObject.GetComponent<Animation>().OnGround();
+        }
+        
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "SnowBallEnemy")
+        {
+            MyAudio.PlayOneShot(SE_DAMAGE);
         }
     }
 
@@ -127,6 +144,7 @@ public class PlayerScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && CanJump)         //Spaceでジャンプ
             {
                 rigid.AddForce(new Vector3(0, 6.0f, 0), ForceMode.Impulse);
+                MyAudio.PlayOneShot(SE_JUMP);
             }
 
             Throw();
