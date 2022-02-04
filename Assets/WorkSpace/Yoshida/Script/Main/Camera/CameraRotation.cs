@@ -77,11 +77,14 @@ public class CameraRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //プレイヤーに追従する
-        Camera.transform.position += Player.transform.position - PlayerPos;
-        LookPos.transform.position += Player.transform.position - PlayerPos;
-        PlayerPos = Player.transform.position;
+        if (Player != null)
+        {
+            //プレイヤーに追従する
+            Camera.transform.position += Player.transform.position - PlayerPos;
+            LookPos.transform.position += Player.transform.position - PlayerPos;
+            PlayerPos = Player.transform.position;
 
-        rotateCamera();
+            rotateCamera();
+        }
     }
 }

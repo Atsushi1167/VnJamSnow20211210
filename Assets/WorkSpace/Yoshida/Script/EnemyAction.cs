@@ -32,7 +32,7 @@ public class EnemyAction : MonoBehaviour
         Elapsed2 = 0.0f;
         InPlayer = false;
         CanThrow = true;
-        CanMove = false;
+        CanMove = true;
     }
 
     public void OnHitMarker()
@@ -69,7 +69,7 @@ public class EnemyAction : MonoBehaviour
     void WalkSystem()
     {
         Elapsed += Time.deltaTime;
-        if (Elapsed > 5.0f)
+        if (Elapsed > 3.0f)
         { //5秒経過したら次の行き先を作る
             Elapsed = 0.0f;
             Destroy(Marker); //前マーカーがあれば削除
@@ -132,8 +132,6 @@ public class EnemyAction : MonoBehaviour
     {
         if (CanMove)
         {
-            if (Player != null)
-            {
                 if (!InPlayer)
                 {
                     WalkSystem();
@@ -145,9 +143,11 @@ public class EnemyAction : MonoBehaviour
                 }
                 else
                 {
+                if (Player != null)
+                {
                     Throw();
                 }
-            }
+                }
         }
     }
 }

@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             CanJump = true;
-            gameObject.GetComponent<Animation>().OnGround();
+            //gameObject.GetComponent<Animation>().OnGround();
         }
     }
 

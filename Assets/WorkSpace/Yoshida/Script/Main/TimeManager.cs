@@ -136,6 +136,7 @@ public class TimeManager : MonoBehaviour
                 break;
 
             case MODE.GameSet:
+                this.GetComponent<ScoreManager>().SetRank();
                 SceneManager.LoadScene("RESULT");
                 break;
 

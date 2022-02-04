@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RuleManager : MonoBehaviour
+public class GOManager : MonoBehaviour
 {
     public Text txtNav;
     public Image imgFill;
@@ -15,6 +15,11 @@ public class RuleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    void Score()
+    {
+
     }
 
     // Update is called once per frame
@@ -31,7 +36,7 @@ public class RuleManager : MonoBehaviour
             LongPush += Time.deltaTime;
             if (LongPush > 3.0f)
             {
-                SceneManager.LoadScene("Main");
+                SceneManager.LoadScene("TITLE");
             }
         }
         else

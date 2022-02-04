@@ -8,12 +8,28 @@ public class ResultManager : MonoBehaviour
 {
     public Text txtNav;
     public Image imgFill;
+    public Text[] txtRank;
 
     float Elapsed = 0.0f;
     float LongPush = 0.0f;
 
     // Start is called before the first frame update
     void Start()
+    {
+        for (int idx = 1; idx <= 5; idx++)
+        {
+            if (PlayerPrefs.GetInt("R" + idx) <= 0)
+            {
+                txtRank[idx - 1].text = "________";
+            }
+            else
+            {
+                txtRank[idx - 1].text = PlayerPrefs.GetInt("R" + idx).ToString("D8");
+            }
+        }
+    }
+
+    void Score()
     {
 
     }
@@ -42,5 +58,12 @@ public class ResultManager : MonoBehaviour
 
         //長押しリング
         imgFill.fillAmount = LongPush / 3.0f;
+
+        ////開発用：データ領域の初期化
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    PlayerPrefs.DeleteAll();
+        //    Debug.Log("データ領域を削除しました。");
+        //}
     }
 }

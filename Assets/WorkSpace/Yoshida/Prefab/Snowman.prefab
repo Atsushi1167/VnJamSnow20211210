@@ -354,6 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkMarker: {fileID: 204071967845465458, guid: ae5fc94268d69484696e9c70c09692c4, type: 3}
   coolTime: 5
+  MaxDis: 10
   SnowBallEnemy: {fileID: 1952879541981541787, guid: 0195b96a67ba3ce499930e5492edd9ae, type: 3}
   InPlayer: 0
 --- !u!114 &697721167538851674
@@ -371,6 +372,7 @@ MonoBehaviour:
   MaxHP: 1
   HP: 0
   DeathEffect: {fileID: 913262849024167894, guid: 284785f778060bc46b6bcff1909ea141, type: 3}
+  SpawnEffect: {fileID: 5902639747398101122, guid: affda66c900431a46bdda47281fceebf, type: 3}
 --- !u!1 &4456198642604647495
 GameObject:
   m_ObjectHideFlags: 0
