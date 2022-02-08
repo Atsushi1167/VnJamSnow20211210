@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject SnowBall;
     public GameObject ShootPos;
     public GameObject SpeedupEffect;
+    public GameObject Animator;
     GameObject TargetPos;
     public float movespeed = 3.0f;          //プレイヤーの歩行速度
     public float dashspeed = 7.0f;          //プレイヤーのダッシュ速度
@@ -116,6 +117,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && CanThrow)
         {
+            Animator.GetComponent<Animation>().Throw();
             LookFront();
             TargetPos.transform.position = CameraManager.GetComponent<CameraRay>().RayOn();
             Instantiate(SnowBall, ShootPos.transform.position, Quaternion.identity);

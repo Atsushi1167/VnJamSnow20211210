@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 7697043682882835915}
   - component: {fileID: 218559072562578472}
   - component: {fileID: 6026595575916471956}
+  - component: {fileID: 282794457843127616}
   m_Layer: 2
   m_Name: Scoreup
   m_TagString: Item
@@ -335,3 +336,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPupEffect: {fileID: 8375977696667789922, guid: e277f81a012c00442ab102fee70310e9, type: 3}
   txtNav: {fileID: 7440757253951880442}
+--- !u!114 &282794457843127616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640935816851273675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbad2e3658b5534e8adb1cf66251a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

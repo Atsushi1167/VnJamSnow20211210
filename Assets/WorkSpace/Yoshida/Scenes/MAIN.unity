@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902639747398101122, guid: affda66c900431a46bdda47281fceebf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8139132155596835324, guid: affda66c900431a46bdda47281fceebf, type: 3}
       propertyPath: m_RootOrder
@@ -616,7 +616,7 @@ MonoBehaviour:
   - {fileID: 4154792872595320586, guid: 92bf3bfd27addb74a8a50c654d1aa04c, type: 3}
   - {fileID: 7640935816851273675, guid: 90f681f7c7488a14983b4a837fc729b9, type: 3}
   ItemMax: 3
-  cooltime: 15
+  cooltime: 10
 --- !u!4 &852240084
 Transform:
   m_ObjectHideFlags: 0
@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902639747398101122, guid: affda66c900431a46bdda47281fceebf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8139132155596835324, guid: affda66c900431a46bdda47281fceebf, type: 3}
       propertyPath: m_RootOrder
@@ -1067,7 +1067,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6459cc0f1ad17f4fbba1a7d947dc44f, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d64e52a7215ad040b2f5ce85f17701a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Limit: 10
+  Limit: 60
   PlayerHP: 0
   SE_START: {fileID: 8300000, guid: 9efc55947c80c4b4ab10b006eb32e8d4, type: 3}
   SE_TIMEUP: {fileID: 8300000, guid: 06a64be29fbd6724abddf1212d23eb92, type: 3}
@@ -1609,7 +1609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902639747398101122, guid: affda66c900431a46bdda47281fceebf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8139132155596835324, guid: affda66c900431a46bdda47281fceebf, type: 3}
       propertyPath: m_RootOrder
@@ -2109,6 +2109,10 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1845184700}
+    - target: {fileID: 68626765457047435, guid: 845dee9c92daaee49ad3a928c39cf07d, type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 1247835555}
     - target: {fileID: 68626765457047435, guid: 845dee9c92daaee49ad3a928c39cf07d, type: 3}
       propertyPath: movespeed
       value: 3

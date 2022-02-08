@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 4551669014382128993}
   - component: {fileID: 6265590071383785090}
   - component: {fileID: 4968572480929500143}
+  - component: {fileID: -3596800098460997655}
   m_Layer: 2
   m_Name: HPup
   m_TagString: Item
@@ -335,3 +336,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPupEffect: {fileID: 8939052725638676618, guid: 26d5df2bb52c29e4f85e74da673a18bc, type: 3}
   txtNav: {fileID: 3655027219357828688}
+--- !u!114 &-3596800098460997655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4607653065099169121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbad2e3658b5534e8adb1cf66251a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
