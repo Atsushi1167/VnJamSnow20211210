@@ -24,7 +24,6 @@ public class Animation : MonoBehaviour
         MyAudio = GetComponent<AudioSource>();
         isMove = false;
         isDash = false;
-        MyAudio.Play();
     }
 
     //歩く・走る
@@ -66,7 +65,10 @@ public class Animation : MonoBehaviour
         myAnim.SetBool("Jump", false);
     }
 
-
+    public void Throw()
+    {
+        myAnim.SetTrigger("Throw");
+    }
 
     // Update is called once per frame
     void Update()
@@ -82,37 +84,32 @@ public class Animation : MonoBehaviour
             myAnim.SetBool("Jump", true);
         }
 
-        if(Parent.CanThrow && Input.GetButton("Fire1"))
-        {
-            myAnim.SetTrigger("Throw");
-        }
+        //if(h > 1.8f || v > 1.8f || h < -1.8f || v < -1.8f)
+        //{
+        //    isDash = true;
+        //}
+        //else if(h > 0.8f || v > 0.8f || h < -0.8f || v < -0.8f)
+        //{
+        //    isMove = true;
+        //    isDash = false;
+        //}
+        //else
+        //{
+        //    isDash = false;
+        //    isMove = false;
+        //}
 
-        if(h > 1.8f || v > 1.8f || h < -1.8f || v < -1.8f)
-        {
-            isDash = true;
-        }
-        else if(h > 0.8f || v > 0.8f || h < -0.8f || v < -0.8f)
-        {
-            isMove = true;
-            isDash = false;
-        }
-        else
-        {
-            isDash = false;
-            isMove = false;
-        }
-
-        if (isDash)
-        {
-            MyAudio.clip = SE_DASH;
-        }
-        else if (isMove)
-        {
-            MyAudio.clip = SE_WALK;
-        }
-        else
-        {
-            MyAudio.clip = null;
-        }
+        //if (isDash)
+        //{
+        //    MyAudio.clip = SE_DASH;
+        //}
+        //else if (isMove)
+        //{
+        //    MyAudio.clip = SE_WALK;
+        //}
+        //else
+        //{
+        //    MyAudio.clip = null;
+        //}
     }
 }
