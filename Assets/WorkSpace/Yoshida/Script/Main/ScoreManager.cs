@@ -7,13 +7,20 @@ public class ScoreManager : MonoBehaviour
 {
     int score;
     public Text txtScore;
+    public Text txtDouble;
     int[] Rank = new int[6]; // 作業エリア
+    public bool Double;
+    float Elapsed;
+    public float Doubletime = 10.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
         txtScore.text = "SCORE : " + score.ToString("D8");
+        txtDouble.text = "";
+        Double = false;
+        Elapsed = 0.0f;
 
         // アプリのデータ領域が存在するか
         if (PlayerPrefs.HasKey("R1"))
@@ -37,8 +44,20 @@ public class ScoreManager : MonoBehaviour
 
     public void ScorePulse()
     {
-        score += 500;
+        if (Double)
+        {
+            score += 500 * 2;
+        }
+        else
+        {
+            score += 500;
+        }
         txtScore.text = "SCORE : " + score.ToString("D8");
+    }
+
+    public void DoubleScore()
+    {
+        Double = true;
     }
 
     public void SetRank()
@@ -68,6 +87,16 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Double)
+        {
+            txtDouble.text = "X2";
+            Elapsed += Time.deltaTime;
+            if(Elapsed > Doubletime)
+            {
+                Double = false;
+                Elapsed = 0.0f;
+                txtDouble.text = "";
+            }
+        }
     }
 }

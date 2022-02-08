@@ -9,13 +9,22 @@ public class Animation : MonoBehaviour
     Animator myAnim;    //自身のアニメーター
     bool CanMove;
     public bool CanJump;
-    
+    AudioSource MyAudio;
+    public bool isMove;
+    public bool isDash;
+    public AudioClip SE_WALK;
+    public AudioClip SE_DASH;
+
     // Start is called before the first frame update
     void Start()
     {
         Parent = this.transform.parent.gameObject.GetComponent<PlayerScript>();
         myAnim = GetComponent<Animator>(); //自身のアニメーターを取得
         ReadyAnim();
+        MyAudio = GetComponent<AudioSource>();
+        isMove = false;
+        isDash = false;
+        MyAudio.Play();
     }
 
     //歩く・走る
@@ -76,6 +85,34 @@ public class Animation : MonoBehaviour
         if(Parent.CanThrow && Input.GetButton("Fire1"))
         {
             myAnim.SetTrigger("Throw");
+        }
+
+        if(h > 1.8f || v > 1.8f || h < -1.8f || v < -1.8f)
+        {
+            isDash = true;
+        }
+        else if(h > 0.8f || v > 0.8f || h < -0.8f || v < -0.8f)
+        {
+            isMove = true;
+            isDash = false;
+        }
+        else
+        {
+            isDash = false;
+            isMove = false;
+        }
+
+        if (isDash)
+        {
+            MyAudio.clip = SE_DASH;
+        }
+        else if (isMove)
+        {
+            MyAudio.clip = SE_WALK;
+        }
+        else
+        {
+            MyAudio.clip = null;
         }
     }
 }

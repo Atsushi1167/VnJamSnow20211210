@@ -12,6 +12,7 @@ TagManager:
   - Target
   - SnowBallEnemy
   - Manager
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - SnowBall
   - SnowBallEnemy
   - Enemy
-  - 
+  - Spawner
   - 
   - 
   - 

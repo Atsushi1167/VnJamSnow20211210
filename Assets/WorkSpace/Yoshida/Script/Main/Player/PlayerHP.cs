@@ -8,23 +8,46 @@ public class PlayerHP : MonoBehaviour
     public int HP;
     public GameObject DeathEffect;
     GameObject obj;
+    bool canDie;
     // Start is called before the first frame update
     void Start()
     {
         HP = MaxHP;
+        canDie = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "SnowBallEnemy")
+        if (other.gameObject.tag == "SnowBallEnemy" && canDie)
         {
             HP--;
+            this.GetComponent<PlayerScript>().isDamage();
+        }
+    }
+
+    public void isInv(bool n)
+    {
+        if(n)
+        {
+            canDie = false;
+        }
+        else
+        {
+            canDie = true;
         }
     }
 
     public int GetHP()
     {
         return HP;
+    }
+
+    public void HPPluse()
+    {
+        if (HP < MaxHP)
+        {
+            HP++;
+        }
     }
 
     // Update is called once per frame
