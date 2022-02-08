@@ -20,8 +20,9 @@ public class EnemyAction : MonoBehaviour
 
     public bool InPlayer;
     bool CanThrow;
-    bool walk;
+    public bool walk;
     bool CanMove;
+    bool isPlay;
 
     AudioSource MyAudio;
 

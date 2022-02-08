@@ -11,10 +11,16 @@ public class RuleManager : MonoBehaviour
 
     float Elapsed = 0.0f;
     float LongPush = 0.0f;
+    float Elapsed2 = 0.0f;
+    AudioSource MyAudio;
+    public AudioClip SE_Click;
+    bool start;
 
     // Start is called before the first frame update
     void Start()
     {
+        MyAudio = GetComponent<AudioSource>();
+        start = false;
     }
 
     // Update is called once per frame
@@ -26,17 +32,22 @@ public class RuleManager : MonoBehaviour
         txtNav.text = (Elapsed < 0.8f) ? "Push Left Mouse Button" : "";
 
         //長押し検出
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !start)
         {
             LongPush += Time.deltaTime;
             if (LongPush > 3.0f)
             {
-                SceneManager.LoadScene("Main");
+                start = true;
             }
         }
         else
         {
             LongPush = 0.0f;
+        }
+
+        if(start)
+        {
+            SceneManager.LoadScene("Main");
         }
 
         //長押しリング

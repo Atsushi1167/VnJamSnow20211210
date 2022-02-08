@@ -8,17 +8,23 @@ public class PlayerScript : MonoBehaviour
     public GameObject CameraManager;
     public GameObject SnowBall;
     public GameObject ShootPos;
+    public GameObject SpeedupEffect;
     GameObject TargetPos;
     public float movespeed = 3.0f;          //プレイヤーの歩行速度
     public float dashspeed = 7.0f;          //プレイヤーのダッシュ速度
     public float ThrowcoolTime = 1.0f;      //雪玉の連射クールタイム
+    public float SpeedupTime = 5.0f;
+    float timespeed;
+    public float SpeedupSpeed = 1.5f;
 
     private bool CanMove;                   //走れるか?
     public bool CanJump;                    //ジャンプできるか?
     public bool CanThrow;                   //投げられるか?
+    public bool speedup;
 
     private float Elapsed;                  //時間計測用
     private float Elapsed2;                 //クールタイムの計測用
+    float Elapsed3;
 
     Vector3 DefaultPos;                     //プレイヤーの初期位置
 
@@ -31,8 +37,6 @@ public class PlayerScript : MonoBehaviour
 
     public AudioClip SE_DAMAGE;
     public AudioClip SE_JUMP;
-    public AudioClip SE_WALK;
-    public AudioClip SE_DASH;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +49,10 @@ public class PlayerScript : MonoBehaviour
         CanThrow = false;
         Elapsed = 0.0f;
         Elapsed2 = 0.0f;
+        Elapsed3 = 0.0f;
         DefaultPos = transform.position;                                //初期位置を保存
         MyAudio = GetComponent<AudioSource>();
+        speedup = false;
     }
 
     private void OnCollisionStay(Collision other)
@@ -62,15 +68,11 @@ public class PlayerScript : MonoBehaviour
             CanJump = true;
             //gameObject.GetComponent<Animation>().OnGround();
         }
-        
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void isDamage()
     {
-        if (other.gameObject.tag == "SnowBallEnemy")
-        {
-            MyAudio.PlayOneShot(SE_DAMAGE);
-        }
+        MyAudio.PlayOneShot(SE_DAMAGE);
     }
 
     private void OnCollisionExit(Collision other)
@@ -132,6 +134,12 @@ public class PlayerScript : MonoBehaviour
         
     }
 
+    public void Speedup()
+    {
+        speedup = true;
+        SpeedupEffect.gameObject.SetActive(true);
+    }
+
     private void Update()
     {
         //スティックの傾きを取得(未実装)
@@ -168,13 +176,27 @@ public class PlayerScript : MonoBehaviour
     {
         Transform myTransform = this.transform;             //自身の座標を取得
 
-        float timespeed = movespeed * Time.deltaTime;       //移動速度*押されている時間
+        if (speedup)
+        {
+            timespeed = movespeed * Time.deltaTime * SpeedupSpeed;       //移動速度*押されている時間
+        }
+        else
+        {
+            timespeed = movespeed * Time.deltaTime;
+        }
 
         if (CanMove)
         {
             if (Input.GetKey(KeyCode.LeftShift))                 //ダッシュしている
             {
-                timespeed = dashspeed * Time.deltaTime;
+                if (speedup)
+                {
+                    timespeed = dashspeed * Time.deltaTime * SpeedupSpeed;
+                }
+                else
+                {
+                    timespeed = dashspeed * Time.deltaTime;
+                }
             }
             if (Input.GetKey(KeyCode.W))                        //Wキーで前進
             {
@@ -195,6 +217,16 @@ public class PlayerScript : MonoBehaviour
             {
                 LookFront();
                 transform.localPosition += transform.right * timespeed;
+            }
+        }
+        if(speedup)
+        {
+            Elapsed3 += Time.deltaTime;
+            if(Elapsed3 > SpeedupTime)
+            {
+                speedup = false;
+                Elapsed3 = 0.0f;
+                SpeedupEffect.gameObject.SetActive(false);
             }
         }
     }

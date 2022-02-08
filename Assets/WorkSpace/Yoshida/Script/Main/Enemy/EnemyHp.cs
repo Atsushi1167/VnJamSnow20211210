@@ -31,7 +31,7 @@ public class EnemyHp : MonoBehaviour
         if(HP == 0)
         {
             //transform.position = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
-            Instantiate(SpawnEffect, new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f)), Quaternion.identity);
+            Instantiate(SpawnEffect, new Vector3(Random.Range(-4.0f, 4.0f), 0.2f, Random.Range(-4.0f, 4.0f)), Quaternion.identity);
             obj = Instantiate(DeathEffect, new Vector3(this.transform.position.x, this.transform.position.y+1, this.transform.position.z), Quaternion.identity);
             Destroy(obj, 1.0f);
             //HP = MaxHP;

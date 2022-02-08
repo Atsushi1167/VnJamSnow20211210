@@ -35,6 +35,8 @@ public class TimeManager : MonoBehaviour
 
     public Text txtThreeCount;
     public Text txtLimit;
+    public GameObject txtScore;
+    public GameObject txtScoreup;
     public GameObject imgCrosshair;
     public Text txtHP;
 
@@ -52,6 +54,10 @@ public class TimeManager : MonoBehaviour
         MyAudio = GetComponent<AudioSource>();
         start = false;
         timeup = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        txtScore.SetActive(false);
+        txtScoreup.SetActive(true);
     }
 
     void SetStart()
@@ -97,13 +103,12 @@ public class TimeManager : MonoBehaviour
                     //プレイヤーを操作可能に
                     Player.GetComponent<PlayerScript>().Play();
                     PlayerAnim.GetComponent<Animation>().PlayAnim();
+                    Player.GetComponent<PlayerHP>().isInv(false);
                 }
 
                 break;
 
             case MODE.Main:
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
                 foreach (GameObject Enemy in Enemies)
                 {
                     Enemy.GetComponent<EnemyAction>().AIOnOff(true);
@@ -113,6 +118,7 @@ public class TimeManager : MonoBehaviour
                     txtThreeCount.text = "";
                     Count -= Time.deltaTime;
                     txtLimit.text = Count.ToString("N0") + "s";
+                    txtScore.SetActive(true);
                     PlayerHP = Player.GetComponent<PlayerHP>().GetHP();
                     txtHP.text = "HP:" + PlayerHP;
                     imgCrosshair.SetActive(true);
@@ -123,6 +129,7 @@ public class TimeManager : MonoBehaviour
                     imgCrosshair.SetActive(false);
                     txtLimit.text = "";
                     txtHP.text = "";
+                    txtScore.SetActive(false);
                     txtThreeCount.text = "GameOver!";
                     if (Elapsed > 1.5f)
                     {
@@ -136,6 +143,7 @@ public class TimeManager : MonoBehaviour
                     txtLimit.text = "";
                     txtHP.text = "";
                     txtThreeCount.text = "GameSet!";
+                    txtScore.SetActive(false);
                     if (!timeup)
                     {
                         MyAudio.PlayOneShot(SE_TIMEUP);
@@ -148,11 +156,12 @@ public class TimeManager : MonoBehaviour
                     //プレイヤーを操作不可に
                     if (Player != null)
                     {
+                        Player.GetComponent<PlayerHP>().isInv(true);
                         Player.GetComponent<PlayerScript>().Ready();
                         PlayerAnim.GetComponent<Animation>().ReadyAnim();
                     }
                 }
-                if (Count < -1.5f)
+                if (Count < -3.0f)
                 {
                     GameMode = MODE.GameSet;
                 }
@@ -161,11 +170,17 @@ public class TimeManager : MonoBehaviour
 
             case MODE.GameSet:
                 this.GetComponent<ScoreManager>().SetRank();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("RESULT");
+                txtScoreup.SetActive(false);
                 break;
 
             case MODE.GameOver:
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("GAMEOVER");
+                txtScoreup.SetActive(false);
                 break;
         }
     }
