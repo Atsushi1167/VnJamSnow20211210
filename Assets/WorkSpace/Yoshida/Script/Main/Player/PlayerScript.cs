@@ -58,11 +58,6 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        //空中に浮いている間ステージオブジェクトに触れる(移動:不可)
-        if (other.gameObject.tag == "Stage" && !CanJump)
-        {
-            CanMove = false;
-        }
         //地面にいる間(移動:可/ジャンプ:可)
         if (other.gameObject.tag == "Ground")
         {
@@ -70,6 +65,16 @@ public class PlayerScript : MonoBehaviour
             //gameObject.GetComponent<Animation>().OnGround();
         }
     }
+
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    空中に浮いている間ステージオブジェクトに触れる(移動: 不可)
+    //    if (other.gameObject.tag == "Stage" && !CanJump)
+    //    {
+    //        CanMove = false;
+    //    }
+    //}
+
 
     public void isDamage()
     {
@@ -200,6 +205,7 @@ public class PlayerScript : MonoBehaviour
                     timespeed = dashspeed * Time.deltaTime;
                 }
             }
+
             if (Input.GetKey(KeyCode.W))                        //Wキーで前進
             {
                 LookFront();
