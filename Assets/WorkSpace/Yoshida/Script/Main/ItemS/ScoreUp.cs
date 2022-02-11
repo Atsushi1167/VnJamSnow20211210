@@ -43,7 +43,7 @@ public class ScoreUp : MonoBehaviour
             }
             else
             {
-                txtNav.text = "[HPfull]";
+                txtNav.text = "[X]";
             }
         }
         if (other.gameObject.tag == "Item")
