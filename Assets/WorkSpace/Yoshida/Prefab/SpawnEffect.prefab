@@ -4829,6 +4829,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 697721167538851678, guid: a8896dec5b8d2bf4f96f7965c75ed103, type: 3}
   Num: 0
+  Max: 4
+  Min: -4
 --- !u!135 &-3280885152669120909
 SphereCollider:
   m_ObjectHideFlags: 0
