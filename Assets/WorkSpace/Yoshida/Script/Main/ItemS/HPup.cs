@@ -74,7 +74,7 @@ public class HPup : MonoBehaviour
             obj = Instantiate(HPupEffect, this.transform.position, Quaternion.identity);
             Destroy(obj, 2.0f);
         }
-        if (Elapsed > 20.0f)
+        if (Elapsed > 30.0f)
         {
             Destroy(gameObject);
         }

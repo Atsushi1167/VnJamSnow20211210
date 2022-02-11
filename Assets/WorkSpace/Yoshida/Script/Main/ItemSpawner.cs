@@ -10,6 +10,8 @@ public class ItemSpawner : MonoBehaviour
     bool CanSpawn = true;
     float cnt;
     public float cooltime = 10.0f;
+    public float Max = 25;
+    public float Min = -25;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class ItemSpawner : MonoBehaviour
                 if (CanSpawn)
                 {
                     int value = Random.Range(0, Item.Length);
-                    Instantiate(Item[value], new Vector3(Random.Range(-5.0f, 5.0f), 0.5f, Random.Range(-5.0f, 5.0f)), Quaternion.identity);
+                    Instantiate(Item[value], new Vector3(Random.Range(Min, Max), 0.5f, Random.Range(Min, Max)), Quaternion.identity);
                 }
                 cnt = 0.0f;
             }

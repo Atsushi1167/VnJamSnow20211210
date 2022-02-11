@@ -355,10 +355,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkMarker: {fileID: 204071967845465458, guid: ae5fc94268d69484696e9c70c09692c4, type: 3}
   coolTime: 5
-  MaxDis: 10
+  MaxDis: 45
   SnowBallEnemy: {fileID: 1952879541981541787, guid: 0195b96a67ba3ce499930e5492edd9ae, type: 3}
   InPlayer: 0
-  SE_walk: {fileID: 8300000, guid: c6459cc0f1ad17f4fbba1a7d947dc44f, type: 3}
+  walk: 0
 --- !u!114 &697721167538851674
 MonoBehaviour:
   m_ObjectHideFlags: 0
